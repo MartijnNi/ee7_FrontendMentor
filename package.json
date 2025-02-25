@@ -1,0 +1,43 @@
+{
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Development project for expression engine websites",
+  "author": "Antwan van Boheemen",
+  "license": "ISC",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "prod": "PROD_MODE=true vite build --mode production",
+    "proxy": "PROD_MODE=true PROXY_MODE=true vite build --watch",
+    "iconfonts": "fantasticon -o resources/fonts -n iconfont -p icon -u /fonts --normalize true resources/icons && mv resources/fonts/iconfont.css resources/base/iconfont.css",
+    "autoload": "node framework/Frontend/Scripts/autoload.js",
+    "make:component": "node framework/Frontend/Scripts/makeComponent.js"
+  },
+  "devDependencies": {
+    "@darkobits/vite-plugin-favicons": "^0.3.2",
+    "@event-calendar/core": "^3.9.0",
+    "@event-calendar/day-grid": "^3.9.0",
+    "@event-calendar/interaction": "^3.9.0",
+    "@event-calendar/list": "^3.9.0",
+    "@event-calendar/resource-time-grid": "^3.10.0",
+    "@event-calendar/resource-timeline": "^3.10.0",
+    "@event-calendar/time-grid": "^3.9.0",
+    "@vituum/vite-plugin-pug": "^1.1.0",
+    "autoprefixer": "^10.4.20",
+    "fantasticon": "^3.0.0",
+    "node-fetch": "^3.3.2",
+    "postcss": "^8.5.2",
+    "sass": "^1.79.1",
+    "vite": "^5.4.6",
+    "vite-plugin-browser-sync": "^3.0.4"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "@tailwindcss/vite": "^4.0.6",
+    "alpinejs": "^3.14.1",
+    "tailwindcss": "^4.0.6",
+    "tiny-slider": "^2.9.4",
+    "vite-plugin-pug-transformer": "^1.0.5"
+  }
+}

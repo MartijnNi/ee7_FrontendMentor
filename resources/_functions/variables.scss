@@ -1,0 +1,41 @@
+@use "sass:map";
+//-----------------------------------------------------------------------------
+// # Project variables
+//-----------------------------------------------------------------------------
+//
+// 	variables in the :root for core design properties that can be reused
+//	across various elements, components, or sections of your application.
+// 
+//  This approach helps keep your codebase maintainable and flexible.
+// 
+
+@use "@lib/config" as * with (
+  //-----------------------------------------------------------------------------
+  // ## Define project colors
+  //-----------------------------------------------------------------------------
+  // 
+  //  Each color generates a color map of 6 color shades
+  // 
+  $colors: (
+    'primary':    hsl(31, 82%, 50%),
+    'secondary':  rgb(35, 168, 225),
+  ),
+);
+
+
+// :root {
+//   // Generates all font sizes
+//   @each $name, $value in $font-sizes {
+//     --fs-#{$name}: #{$value};
+//   }
+//   // Generate colors from defined color map
+//   @each $color, $color-map in $colors {
+//     @each $name, $value in map.get($colors, $color) {
+//       --#{$color}-#{$name}: #{$value};
+//     }
+//   }
+  
+//   --ff-primary: sans-serif;
+ 
+  
+// }

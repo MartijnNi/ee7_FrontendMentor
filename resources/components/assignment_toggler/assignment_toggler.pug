@@ -1,0 +1,9 @@
+mixin assignment_toggler()
+  .assignment_toggler
+    div(x-data="{showAssignment: 0}")
+      button(@click="showAssignment = 1") Junior Opdracht 1
+      button(@click="showAssignment = 2") Junior Opdracht 2
+      div(x-show="showAssignment === 1") 
+        +junior_opdracht_1()
+      div(x-show="showAssignment === 2")
+        +junior_opdracht_2()

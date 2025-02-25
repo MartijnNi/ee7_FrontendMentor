@@ -1,0 +1,199 @@
+//-----------------------------------------------------------------------------
+// # Animations
+//-----------------------------------------------------------------------------
+//
+// Animations provide visual effects that enhance user experience by adding 
+// dynamic behavior to elements. Below are several commonly used animations
+// with examples of how to apply them.
+//
+// This approach helps in reusing animations across different parts of your 
+// application, ensuring consistency and maintainability.
+//
+//-----------------------------------------------------------------------------
+// Shake Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Adds a shaking effect, useful for indicating errors or attracting
+// attention to elements.
+//
+// Usage:
+//   .element {
+//     animation: shake 0.5s ease-in-out;
+//   }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+//-----------------------------------------------------------------------------
+// Fade In Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Smoothly fades an element into view, ideal for transitions or 
+// initial appearance effects.
+//
+// Usage:
+//   .element {
+//     opacity: 0;  // Ensure the element starts as invisible
+//     &.active {
+//       animation: fadeIn 250ms ease-in forwards; // Apply the fade-in animation
+//     }
+//   }
+//
+// Example:
+//   To make a button fade in when an input field is focused, you can use:
+//   .form__field {
+//     input {
+//       &:focus-within ~ button {
+//         animation: fadeIn 250ms ease-in forwards;
+//       }
+//     }
+//   }
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+//-----------------------------------------------------------------------------
+// Slide In From Left Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Slides an element in from the left side of the screen, suitable 
+// for sidebars or content that appears as the user scrolls or interacts.
+//
+// Usage:
+//   .element {
+//     animation: slideInFromLeft 0.5s ease-out;
+//   }
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+//-----------------------------------------------------------------------------
+// Slide In From Top Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Slides an element in from the top side of the screen, suitable 
+// for sidebars or content that appears as the user scrolls or interacts.
+//
+// Usage:
+//   .element {
+//     animation: slideInFromTop 0.5s ease-out;
+//   }
+@keyframes slideInFromTop {
+  0% { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+//-----------------------------------------------------------------------------
+// Slide In From Right Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Slides an element in from the top side of the screen, suitable 
+// for sidebars or content that appears as the user scrolls or interacts.
+//
+// Usage:
+//   .element {
+//     animation: slideInFromRight 0.5s ease-out;
+//   }
+@keyframes slideInFromRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+//-----------------------------------------------------------------------------
+// Bounce Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Creates a bouncing effect, often used for buttons or notifications
+// to draw attention.
+//
+// Usage:
+//   .element {
+//     animation: bounce 1s infinite;
+//   }
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+//-----------------------------------------------------------------------------
+// Pulse Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Creates a pulsing effect, useful for drawing attention to elements
+// like notifications or call-to-action buttons.
+//
+// Usage:
+//   .element {
+//     animation: pulse 1.5s infinite;
+//   }
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+//-----------------------------------------------------------------------------
+// Rotate Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Rotates an element around its center, useful for loading spinners
+// or rotation effects.
+//
+// Usage:
+//   .element {
+//     animation: rotate 1s linear infinite;
+//   }
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+//-----------------------------------------------------------------------------
+// Slide In From Bottom Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Slides an element in from the bottom, commonly used for notifications
+// or dropdowns.
+//
+// Usage:
+//   .element {
+//     animation: slideInFromBottom 0.5s ease-out forwards;
+//   }
+@keyframes slideInFromBottom {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+//-----------------------------------------------------------------------------
+// Flip Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Creates a flipping effect, useful for card flips or UI transitions.
+//
+// Usage:
+//   .element {
+//     animation: flip 1s ease-in-out forwards;
+//   }
+@keyframes flip {
+  0% { transform: rotateY(0); }
+  100% { transform: rotateY(180deg); }
+}
+
+//-----------------------------------------------------------------------------
+// Expand Animation
+//-----------------------------------------------------------------------------
+//
+// Purpose: Expands an element from its center, suitable for dropdowns or modals.
+//
+// Usage:
+//   .element {
+//     animation: expand 0.5s ease-out;
+//   }
+@keyframes expand {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}

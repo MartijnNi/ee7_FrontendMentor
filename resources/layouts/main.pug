@@ -1,0 +1,16 @@
+include ../_components
+doctype html
+html
+  head
+    title #{title}
+    meta(charset='utf-8')
+    meta(name='viewport', content= 'width=device-width, initial-scale=1.0')
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    link(rel='stylesheet' href='/resources/styles.scss')
+    script(type='module' defer src='/resources/scripts.js')
+    link(rel="icon" type="image/svg+xml" href="/images/meta/favicon.svg")
+    script(defer='' src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js')
+    block head
+  body
+    block content
+      

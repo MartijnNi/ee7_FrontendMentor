@@ -1,0 +1,13 @@
+mixin junior_opdracht_1()
+  .junior_opdracht_1
+    .container.mx-auto
+      div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4")
+        each i in [1, 2, 3]
+          .bg-white.shadow-lg.rounded-lg.overflow-hidden.border.border-gray-200
+            .p-6
+              h1.text-xl.font-bold.text-primary-500 Junior Opdracht #{i}
+              p.text-gray-600 PHP VERSION: 8.3
+            .p-6.bg-gray-50
+              h2.text-lg.font-semibold.text-gray-900 Welcome to My Website
+              p.text-gray-700 This is a paragraph with Tailwind styles.
+              img(src="/images/meta/favicon.svg", alt="", srcset="")
