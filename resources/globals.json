@@ -1,0 +1,53 @@
+{
+  "site": {
+    "name": "Website",
+    "description": "De beste plek voor geweldige content.",
+    "author": "Bedrijfsnaam",
+    "language": "nl",
+    "charset": "UTF-8"
+  },
+  "contact": {
+    "email": "info@website.nl",
+    "phone": "+31 6 12345678",
+    "address": "Straatnaam 1, 1234 AB, Apeldoorn",
+    "kvk": "12345678",
+    "btw": "NL001234567B01"
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "Over ons",
+      "url": "/over"
+    },
+    {
+      "label": "Diensten",
+      "url": "/diensten"
+    },
+    {
+      "label": "Blog",
+      "url": "/blog"
+    },
+    {
+      "label": "Contact",
+      "url": "/contact"
+    }
+  ],
+  "socials": {
+    "facebook": "https://www.facebook.com",
+    "twitter": "https://www.twitter.com",
+    "linkedin": "https://www.linkedin.com",
+    "instagram": "https://www.instagram.com"
+  },
+  "footer": {
+    "copyright": "© 2025 Website. Alle rechten voorbehouden.",
+    "terms_url": "/algemene-voorwaarden",
+    "privacy_url": "/privacybeleid"
+  },
+  "settings": {
+    "theme": "light",
+    "tracking_enabled": true
+  }
+}

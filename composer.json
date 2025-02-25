@@ -1,0 +1,29 @@
+{
+    "name": "avb/development-framework",
+    "version": "1.0.0",
+    "description": "Default development project with ExpressionEngine",
+    "autoload": {
+        "psr-4": {
+            "AVB\\DevelopmentFramework\\": "framework/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Antwan van Boheemen",
+            "email": "avboheemen@dunique.nl"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "scripts": {
+        "setup:ddev": "mkdir -p .ddev && [ -f .ddev/.env ] || cp .env.example .ddev/.env && export $(grep -v '^#' .ddev/.env | xargs) composer install && ddev config --docroot=website/public_html --project-type=php --webserver-type=apache-fpm --database=mysql:8.0 --nodejs-version=${NODE_VERSION} --default-container-timeout=240 && ddev start && ddev add-on get ddev/ddev-phpmyadmin && ddev restart",
+        "setup:ee": "ddev php ./cli install && ddev php ./cli generate:boilerplate",
+        "setup:frontend": "ddev npm install --loglevel=error && ddev npm run iconfonts",
+        "setup:website": "composer run setup:frontend && composer run setup:ee && ddev npm run prod && ddev launch"
+    },
+    "config": {
+        "vendor-dir": "framework/vendor"
+    }
+}

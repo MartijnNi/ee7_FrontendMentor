@@ -1,0 +1,103 @@
+@use "sass:math";
+
+//------------------------------------------------
+// Unit functions
+//------------------------------------------------
+
+@function validateValue($value) {
+  @if getUnit($value) == 'em' or getUnit($value) == 'rem'  or getUnit($value) == 'vh' or getUnit($value) == 'vw' or $value == 'auto'  {
+    @return $value;
+  } @else {
+    @return toRem($value);
+  }
+}
+
+@function validateValues($values) {
+  @if length($values) == 0 {
+    @return null;
+  }
+  $output: null;
+  @each $value in $values {
+      $output: #{$output} + ' ' + #{validateValue($value)};
+  }
+  @return $output;
+}
+@function getUnit($value) {
+  @return math.unit($value);
+}
+
+@function strip-unit($number) {
+  @if type-of($number)=='number'and not unitless($number) {
+      @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+@function toRem($px, $hasUnit: true, $fs-root: 16px) {
+  @if getUnit($px) == 'rem' {
+    @return $px;
+  }
+  $new-size: math.div(strip-unit($px), strip-unit($fs-root));
+
+  @if $hasUnit==true {
+      $new-size: $new-size + rem;
+  }
+
+  @return $new-size;
+}
+
+@function toEm($px, $hasUnit: true, $fs-root: 16px) {
+  @if getUnit($px) == 'em' {
+    @return $px;
+  }
+
+  $new-size: math.div(strip-unit($px), strip-unit($fs-root));
+
+  @if $hasUnit==true {
+      $new-size: $new-size + em;
+  }
+
+  @return $new-size;
+}
+
+// example: fluid(1rem, 1.25rem)
+
+@function fluid($minSize, $maxSize, $minViewportPx: 412px, $maxViewportPx: 1920px, $fs-root: 16px) {
+  $pixelsPerRem: strip-unit($fs-root);
+  $minSizeN: strip-unit($minSize);
+  $maxSizeN: strip-unit($maxSize);
+  $minViewportPxN: strip-unit($minViewportPx);
+  $maxViewportPxN: strip-unit($maxViewportPx);
+
+  $minWidth: math.div($minViewportPxN, $pixelsPerRem);
+  $maxWidth: math.div($maxViewportPxN, $pixelsPerRem);
+
+  $slope: math.div(($maxSizeN - $minSizeN), ($maxWidth - $minWidth));
+  $yAxisIntersection: -$minWidth * $slope + $minSizeN;
+
+  @return clamp(#{$minSizeN}rem, #{$yAxisIntersection}rem + #{($slope * 100)}vw, #{$maxSizeN}rem);
+}
+
+/// REF: https://stackoverflow.com/questions/32376461/how-to-split-a-string-into-two-lists-of-numbers-in-sass
+@function str-split($string, $separator) {
+  // empty array/list
+  $split-arr: ();
+  // first index of separator in string
+  $index : str-index($string, $separator);
+  // loop through string
+  @while $index != null {
+      // get the substring from the first character to the separator
+      $item: str-slice($string, 1, $index - 1);
+      // push item to array
+      $split-arr: append($split-arr, $item);
+      // remove item and separator from string
+      $string: str-slice($string, $index + 1);
+      // find new index of separator
+      $index : str-index($string, $separator);
+  }
+  // add the remaining string to list (the last item)
+  $split-arr: append($split-arr, $string);
+
+  @return $split-arr;
+}

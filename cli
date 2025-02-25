@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+define("DEFAULT_PROJECT_PATH", __DIR__);
+
+require_once DEFAULT_PROJECT_PATH . '/framework/vendor/autoload.php';
+
+// $dotenv = Dotenv\Dotenv::createImmutable(DEFAULT_PROJECT_PATH);
+// $dotenv->load();
+
+new \AVB\DevelopmentFramework\Framework();
+
+exit;

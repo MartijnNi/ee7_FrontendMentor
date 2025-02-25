@@ -1,0 +1,117 @@
+@use "sass:math";
+@use "sass:color";
+@use "sass:map";
+// $colors: ();
+// $theme-colors: ();
+
+//// ==================================
+// Variables / Maps
+//// ==================================
+
+$colors: ()!default;
+
+/// ===================================
+// Functions
+/// ===================================
+
+$number_of_color_shades: 9!default;
+$color_shift_percentage: 12%!default;
+
+$default-shade: calc(math.ceil(math.div($number_of_color_shades, 2)) * 100);
+
+@function generate-color-shades($color, $step: $color_shift_percentage) {
+  $shades: ();
+  @for $i from $number_of_color_shades through 1 {
+    $base-lightness: color.channel($color, 'lightness');
+    $base-saturation: color.channel($color, 'saturation');
+    $base-hue: color.channel($color, 'hue');
+
+    // Calculate lightness
+    $new-lightness: if(
+      $i == math.ceil(math.div($number_of_color_shades, 2)), 
+      $base-lightness, 
+      $base-lightness + $step * (math.ceil(math.div($number_of_color_shades, 2)) - $i)
+    );
+    
+    // Calculate saturation
+    $new-saturation: if(
+      $i == math.ceil(math.div($number_of_color_shades, 2)), 
+      $base-saturation, 
+      $base-saturation - $step * math.div((math.ceil(math.div($number_of_color_shades, 2)) - $i), 2)
+    );
+
+    // Generate new shade using color.channel() instead of hue()
+    $new-shade: hsl($base-hue, $new-saturation, $new-lightness);
+    $shades: map.merge($shades, ($i*100: $new-shade));
+  }
+  @return $shades;
+}
+
+
+
+$color-shades-map: ();
+
+@each $color-name, $color in $colors {
+  $shades: generate-color-shades($color);
+  $color-shades-map: map.merge($color-shades-map, ($color-name: $shades));
+}
+
+$colors: map.merge($colors, $color-shades-map);
+
+/// @parameter $color - named key of colors map
+/// @parameter $shade - submap key which represents the shade of the primary named key
+@function color($color, $shade: $default-shade) {
+  @if map.has-key($colors, $color, $shade) {
+    @return map.get($colors, $color, $shade );
+  } @else {
+    @error "Not a color: " + $color " shade: " + $shade;
+  }
+}
+/// @alias color
+@function clr($color, $shade: $default-shade) {
+  @return color($color, $shade);
+}
+
+/// Returns a lighter hsl value
+/// @parameter $color
+/// @parameter $amount
+@function hsl-lighten($color, $amount) {
+  @return hsl(hue($color), saturation($color), lightness($color) + $amount);
+}
+/// Returns a darker hsl value
+/// @parameter $color
+/// @parameter $amount
+@function hsl-darken($color, $amount) {
+  @return hsl(hue($color), saturation($color), lightness($color) - $amount);
+}
+/// Returns a transparentized hsl color value
+/// @parameter $color
+/// @parameter $amount
+@function hsl-alpha($color, $alpha) {
+  @return hsla(hue($color), saturation($color), lightness($color), $alpha);
+}
+
+/// Returns RGB hex color
+/// @parameter $color
+@function toRGB($color) {
+  @return unquote("rgb(" + red($color) + ", " + green($color) + ", " + blue($color)+ ");");
+}
+
+/// ===================================
+// Mixins
+/// ===================================
+
+@mixin darkmode(){
+  @if $color-scheme-enabled {
+    @media (prefers-color-scheme: dark) {
+      @content;
+    }
+  }
+}
+@mixin lightmode() {
+  @if $color-scheme-enabled {
+    @media (prefers-color-scheme: light) {
+      @content;
+    }
+  }
+}

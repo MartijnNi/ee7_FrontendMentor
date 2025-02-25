@@ -1,0 +1,79 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "./base/index.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "./**/*.pug";
+ /* *.group is required */
+@source "../website/system/user/templates/default_site/*.group/**/*.html";
+
+@theme {
+  --color-*: initial;
+  /* =================================================================
+  // Colors
+  // =================================================================
+  //
+  // use https://www.tailwindshades.com/ to generate color hues
+  //
+  // ---------------------------------------------------------------*/
+
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-primary-50: oklch(92.828% 0.05947 81.025);
+  --color-primary-100: oklch(90.797% 0.07524 80.389);
+  --color-primary-200: oklch(87.128% 0.10704 79.751);
+  --color-primary-300: oklch(83.36% 0.13435 78.216);
+  --color-primary-400: oklch(80.131% 0.15433 75.295);
+  --color-primary-500: oklch(76.859% 0.16466 70.08);
+  --color-primary-600: oklch(64.224% 0.13665 70.798);
+  --color-primary-700: oklch(50.603% 0.10641 71.626);
+  --color-primary-800: oklch(35.978% 0.07427 73.647);
+  --color-primary-900: oklch(19.902% 0.03866 83.983);
+  --color-primary-950: oklch(8.5603% 0.01756 94.54);
+  
+  --color-gray-50: oklch(0.984 0.003 247.858);
+  --color-gray-100: oklch(0.968 0.007 247.896);
+  --color-gray-200: oklch(0.929 0.013 255.508);
+  --color-gray-300: oklch(0.869 0.022 252.894);
+  --color-gray-400: oklch(0.704 0.04 256.788);
+  --color-gray-500: oklch(0.554 0.046 257.417);
+  --color-gray-600: oklch(0.446 0.043 257.281);
+  --color-gray-700: oklch(0.372 0.044 257.287);
+  --color-gray-800: oklch(0.279 0.041 260.031);
+  --color-gray-900: oklch(0.208 0.042 265.755);
+  --color-gray-950: oklch(0.129 0.042 264.695);
+
+  /* =================================================================
+  // Fonts
+  // =================================================================
+  //
+  // Define font properties
+  //
+  // ---------------------------------------------------------------*/
+
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Define your font sizes */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+}
+
+@layer base {
+  h1 {
+    font-size: var(--text-2xl);
+  }
+  h2 {
+    font-size: var(--text-xl);
+  }
+  h3 {
+    font-size: var(--text-lg);
+  }
+  a {
+    color: var(--color-blue-600);
+    text-decoration-line: underline;
+  }
+}
