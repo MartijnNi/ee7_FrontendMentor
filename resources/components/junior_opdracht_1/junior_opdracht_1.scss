@@ -1,5 +1,78 @@
 // Styles for junior_opdracht_1
+$bg-color: oklch(16% 8% 275deg);
+$bg-color-card: oklch(23% 15% 285deg);
+$highlight-color: oklch(63% 43% 311deg);
+$overlay-color: oklch(53% 43% 310deg);
+$margin-card: 2rem;
+$primary-text-color: #ffffff;
+$secondary-text-color: #a3a3a3;
+
 
 .junior_opdracht_1 {
-  // Add styles for junior_opdracht_1 here
+  background-color: $bg-color;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column-reverse;
+  min-width: 324px;
+  background-color: $bg-color-card;
+  color: $primary-text-color;
+  
+  &__first{
+    text-align: center;
+    font-weight: bold;
+
+    &--title {
+      .highlight {
+        color: $highlight-color;
+      }
+    }
+    &--discription{
+      color: $secondary-text-color;
+    }
+
+    &--stats{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+
+      &-item{
+        .title
+        {
+          color: $primary-text-color;
+        }
+        .discription{
+          color: $secondary-text-color;
+        }
+      }
+    }
+
+  }
+
+  &__second {
+    position: relative;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $overlay-color; // Apply purple overlay
+      mix-blend-mode: multiply;
+    }
+  }
 }
