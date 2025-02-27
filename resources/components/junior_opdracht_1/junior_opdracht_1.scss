@@ -7,6 +7,13 @@ $margin-card: 2rem;
 $primary-text-color: #ffffff;
 $secondary-text-color: #a3a3a3;
 
+.wrapper{
+  display: flex;
+  gap: $margin-card;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 .junior_opdracht_1 {
   background-color: $bg-color;
