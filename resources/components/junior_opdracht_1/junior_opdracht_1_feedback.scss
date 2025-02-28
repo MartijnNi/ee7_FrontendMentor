@@ -1,0 +1,63 @@
+// Styles for junior_opdracht_1
+$bg-color: oklch(16% 8% 275deg);
+$bg-color-card: oklch(23% 15% 285deg);
+$highlight-color: oklch(63% 43% 311deg);
+$overlay-color: oklch(53% 43% 310deg);
+$margin-card: 2rem;
+$primary-text-color: #ffffff;
+$secondary-text-color: #a3a3a3;
+
+
+.junior_opdracht_1_feedback {
+  background-color: $bg-color;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .wrapper {
+    display: flex;
+    gap: $margin-card;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 3rem;
+  }
+
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    background-color: $bg-color-card;
+
+    color: $secondary-text-color;
+
+    &__content {
+      flex: 1;
+      padding: 3rem;
+    }
+
+    &__image {
+      flex: 1;
+    }
+
+    &__stats {
+      display: flex;
+    }
+
+    &__title, &__stats h3 {
+      color: $primary-text-color;
+    }
+
+    &--light {
+      color: $highlight-color;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .card {
+      flex-direction: row;
+    }
+  }
+}
