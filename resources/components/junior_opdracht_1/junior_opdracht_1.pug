@@ -2,30 +2,27 @@ mixin junior_opdracht_1()
   .junior_opdracht_1
     // Card component without wrapper
     .wrapper
-      .card.my-auto.mx-auto.max-w-sm.mt-10.mb-10.rounded-xl.overflow-hidden
-        .card__first.my-8.mx-10
+      .card.my-auto.mx-auto.rounded-xl.overflow-hidden
+        .card__first
           .card__first--title
-            h2 Get <span class="highlight">insights</span> that help your business grow.
+            h2 Get #[span.highlight insights] that help your business grow.
           .card__first--discription.my-4.font-light
             p Discover the benefits of data analytics and make better decisions regarding revenue, customer experience, and overall efficiency.
           .card__first--stats.mt-6
-
             .card__first--stats-item
               .title.font.text-ellipsis
                 h3 10k+
               .discription.font-light
                 p Companies
-
             .card__first--stats-item
               .title.text-2xl
                 h3 314
               .discription.font-light
                 p Templates
-            
             .card__first--stats-item
               .title.text-9xl
                 h3 12M+
               .discription.font-light
                 p Queries
         .card__second
-          img(src="/images/CardComponent/image-header-mobile.jpg", alt="", srcset="")
+          img(src="/images/CardComponent/image-header-mobile.jpg", alt="image", srcset="")

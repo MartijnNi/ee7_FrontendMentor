@@ -1,11 +1,21 @@
 // Styles for junior_opdracht_1
-$bg-color: oklch(16% 8% 275deg);
-$bg-color-card: oklch(23% 15% 285deg);
-$highlight-color: oklch(63% 43% 311deg);
-$overlay-color: oklch(53% 43% 310deg);
-$margin-card: 2rem;
-$primary-text-color: #ffffff;
-$secondary-text-color: #a3a3a3;
+.junior_opdracht_1 {
+  $bg-color: oklch(16% 8% 275deg);
+  $bg-color-card: oklch(23% 15% 285deg);
+  $highlight-color: oklch(63% 43% 311deg);
+  $overlay-color: oklch(53% 43% 310deg);
+  $margin-card: 2rem;
+  $primary-text-color: #ffffff;
+  $secondary-text-color: #a3a3a3;
+
+
+  background-color: $bg-color;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 
 .wrapper{
   display: flex;
@@ -13,25 +23,17 @@ $secondary-text-color: #a3a3a3;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-}
-
-.junior_opdracht_1 {
-  background-color: $bg-color;
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 3rem;
 }
 
 .card {
   display: flex;
   flex-direction: column-reverse;
-  min-width: 324px;
   background-color: $bg-color-card;
   color: $primary-text-color;
   
   &__first{
+    margin: 2rem 1rem;
     text-align: center;
     font-weight: bold;
 
@@ -61,7 +63,6 @@ $secondary-text-color: #a3a3a3;
         }
       }
     }
-
   }
 
   &__second {
@@ -69,7 +70,9 @@ $secondary-text-color: #a3a3a3;
     img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      background-size: contain;
+      opacity: 0.8;
     }
     &::after {
       content: '';
@@ -82,4 +85,64 @@ $secondary-text-color: #a3a3a3;
       mix-blend-mode: multiply;
     }
   }
+}
+
+@media (min-width: 768px) {
+
+  .wrapper{
+    display: flex;
+    gap: $margin-card;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0rem 
+  }
+
+  .card {
+    margin: 0rem 5rem;
+    max-height: 400px;
+    max-width: 940px;
+    flex-direction: row;
+
+
+    &__first {
+    align-content: center;
+    text-align: left;
+    max-width: 50%;
+    margin: 0;
+    padding: 3rem;
+    
+      &--stats {
+        flex-direction: row;
+        gap: 2rem;
+      }
+
+      &--stats{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: start;
+  
+        &-item{
+          .title
+          {
+            color: $primary-text-color;
+          }
+          .discription{
+            color: $secondary-text-color;
+          }
+        }
+      }
+    }
+
+    &__second {
+      position: relative;  
+      img {
+        display: block; 
+        min-width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
 }
