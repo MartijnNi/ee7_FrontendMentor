@@ -1,5 +1,100 @@
 // Styles for junior_opdracht_2
 
 .junior_opdracht_2 {
-  // Add styles for junior_opdracht_2 here
+  // Variables 
+  $soft-blue: hsl(215, 51%, 70%);
+  $cyan: hsl(178, 100%, 50%);
+
+  $very-dark-blue-bg: hsl(217, 54%, 11%);
+  $very-dark-blue-card: hsl(216, 50%, 16%);
+  $very-dark-blue-line: hsl(215, 32%, 27%);
+  $white: hsl(0, 0%, 100%);
+  
+  $font-size: 18px;
+  $fw-300: 300;
+  $fw-400: 400;
+  $fw: 600;
+
+  $spacing: 1rem;
+
+  // General/body styles
+  background-color: $very-dark-blue-bg;
+  height: 100vh;
+  width: 100vw;
+
+  .card{
+    background-color: $very-dark-blue-card;
+    border-radius: 15px;
+    padding: 23px;
+    max-width: 375px;
+    font-size: $font-size;
+
+    &__image{
+      img{
+        width: 100%;
+        border-radius: 10px;
+      }
+      margin-bottom: $spacing;
+    }
+
+    &__title{
+      margin-bottom: 1rem;
+      h1{
+        color: $white;
+        font-weight: $fw;
+        margin-bottom: 1rem;
+      }
+      p{
+        color: $soft-blue;
+        font-weight: $fw-300;
+      }
+    }
+
+    &__stats{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      border-bottom: 1px solid $very-dark-blue-line;
+      padding-bottom: $spacing;
+      
+      .card__stat{
+        color: $cyan;
+        display: ruby;
+
+        img{
+          margin-right: 0.5rem;
+        }
+
+        &:nth-child(1) p {
+          text-transform: capitalize;
+        }
+
+        &:nth-child(2) p {
+          color: $soft-blue; // Kleur voor de tweede stat (bijvoorbeeld rood)
+        }
+
+      }
+    }
+
+    &__profile{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: $spacing;
+      color: $soft-blue;
+      .highlight{
+        color: $white;
+        font-weight: $fw;
+        margin-right: 1rem;
+      }
+      img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 1rem;
+        border: $white solid 1px;
+      }
+      
+    }
+  }
 }
