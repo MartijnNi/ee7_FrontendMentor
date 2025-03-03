@@ -4,6 +4,7 @@
   // Variables 
   $soft-blue: hsl(215, 51%, 70%);
   $cyan: hsl(178, 100%, 50%);
+  $cyan-hover: hsla(178, 100%, 60%, 0.502);
 
   $very-dark-blue-bg: hsl(217, 54%, 11%);
   $very-dark-blue-card: hsl(216, 50%, 16%);
@@ -29,25 +30,64 @@
     max-width: 375px;
     font-size: $font-size;
 
-    &__image{
-      img{
+    &__image {
+      margin-bottom: $spacing;
+      display: inline-block;
+      position: relative;
+    
+      img {
+        display: block;
         width: 100%;
         border-radius: 10px;
       }
-      margin-bottom: $spacing;
+    
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $cyan-hover;
+        border-radius: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+
+        img{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 50px;
+          height: 50px;
+        }
+      }
+      &:hover {
+        .overlay {
+          opacity: 1; // Laat de overlay verschijnen bij hover
+        }
+      }
+    
     }
 
     &__title{
       margin-bottom: 1rem;
       h1{
+        width: max-content;
         color: $white;
         font-weight: $fw;
         margin-bottom: 1rem;
+        
+        &:hover{
+          color: $cyan;
+          cursor: pointer;
+
+        }
       }
       p{
         color: $soft-blue;
         font-weight: $fw-300;
       }
+
     }
 
     &__stats{
@@ -82,10 +122,16 @@
       align-items: center;
       margin-top: $spacing;
       color: $soft-blue;
+      font-weight: $fw-300;
+
       .highlight{
         color: $white;
-        font-weight: $fw;
         margin-right: 1rem;
+
+        &:hover{
+          cursor: pointer;
+          color: $cyan;
+        }
       }
       img{
         width: 50px;
