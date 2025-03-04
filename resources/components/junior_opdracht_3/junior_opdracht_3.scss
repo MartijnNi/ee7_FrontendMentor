@@ -12,6 +12,7 @@
   $padding-newsletter: 0rem 2rem;
   $margin-bottom: 2rem;
   $gap: 1.5rem;
+  $border-radius: 25px;
 
 //text
   $fs: 18px;
@@ -24,21 +25,38 @@
   padding: 5rem 0rem ;
   background: $blue-800;
 
-//styling newsletter
+//styling newsletter mobile
   .newsletter{
     display: flex;
+    font-size: $fs;
     flex-direction: column;
     justify-content: center;
+
     gap: $gap;
-    
-    
     background-color: $white;
-    max-width: 475px; //mobile 
-    font-size: $fs;
+    border-radius: 25px;
+
+    
+    @media (min-width: 1024px) { //dekstop
+      flex-direction: row-reverse;
+      justify-content: center;
+      gap: $gap;
+      padding: 1.5rem;
+    }
+    
+    
 
     &__image{
+      width: 100%;
+      margin-left: auto;
       img{
+        border-radius: $border-radius;
         width: 100%;
+      }
+
+      @media (min-width: 1024px) {
+        width: 50%;
+        margin-left: 0;
       }
     }
 
@@ -56,15 +74,33 @@
       p{
         color: $blue-700;
       }
+
+      @media (min-width: 1024px) { //dekstop
+        justify-content: center;
+      }
     }
  
     &__list{
       ul {
         display: flex;
         flex-direction: column;
-        padding: 0rem 3.5rem ;
+        padding: 0rem;
         gap: 0.5rem;
-        list-style-image: url("/images/newsletter/icon-list.svg");
+        list-style: none;
+      }
+
+      li{
+        padding-left: 1em;
+        position: relative;
+        &::before{
+          content: "";
+          position: absolute;
+          top: .15em;
+          width: 1.35rem;
+          height: 1.35rem;
+          left: calc(-.25em * .5);
+          background: url("/images/newsletter/icon-list.svg") no-repeat;          
+        }
       }
 
       p{
@@ -72,47 +108,12 @@
       }
     }
 
-    &__mail{
-      padding: $padding-newsletter;
+    &__form{
       display: flex;
       position: relative;
       flex-direction: column;
       gap: $gap;
       margin-bottom: $margin-bottom;
-
-      .notify {
-        p {
-          font-size: $forum-fs;
-          position: absolute;
-          left: $padding-newsletter;
-        }
-    
-        .alert {
-          position: absolute;
-          right: 2rem;
-          font-size: $forum-fs;
-          color: red;
-          display: none; // Verborgen standaard
-        }
-      }
-    
-      form {
-        border: solid 1px $grey;
-        border-radius: 10px;
-        padding: 1rem;
-        transition: border-color 0.3s ease-in-out;
-    
-        input {
-          padding-left: 0.5rem;
-          border: none;
-        }
-    
-        &.error { 
-          border-color: red; // Formulier rood maken bij fout
-          box-shadow: 0px 0px 20px hsla(0, 100%, 50%, 0.373);
-          transition: all 0.3s ease-in-out;
-        }
-      }
 
       button{
         background-color: $blue-700;
@@ -128,6 +129,44 @@
           transition: all 0.3s ease-in-out;
         }
       }
+    }
+
+    &__input {
+      input{
+        border: solid 1px $grey;
+        border-radius: 10px;
+        width: 100%;
+        padding: .5rem 1rem;
+        transition: border-color 0.3s ease-in-out;
+      }
+      p {
+        font-size: $forum-fs;
+        position: absolute;
+        left: $padding-newsletter;
+      }
+  
+      .newsletter_alert {
+        position: absolute;
+        right: 2rem;
+        font-size: $forum-fs;
+        color: red;
+        display: none; // Verborgen standaard
+      }
+
+      &.invalid {
+        input {
+          border-color: red;
+        }
+        .newsletter_alert {
+          display: block;
+        }
+      }
+    }
+
+    &__input-label {
+      display: flex;
+      font-size: $forum-fs;
+      padding: .5em 0;
     }
   }
 }

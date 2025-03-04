@@ -2,8 +2,8 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("newsletterForm");
-    const emailInput = document.getElementById("email");
-    const alertMessage = document.querySelector(".alert");
+    const emailInput = form.querySelector("#email");
+    const alertMessage = form.querySelector(".newsletter_alert");
   
     form.addEventListener("submit", function (event) {
       event.preventDefault(); // Standaard formulier submit blokkeren
@@ -12,10 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   
       if (!emailPattern.test(emailInput.value)) {
-        form.classList.add("error"); // Rode rand aan form toevoegen
-        alertMessage.style.display = "block"; // Alert tonen
+        emailInput.parentElement.classList.add("invalid"); // Rode rand aan form toevoegen
       } else {
-        form.classList.remove("error"); // Rode rand weghalen
+        form.classList.remove("invalid"); // Rode rand weghalen
         alertMessage.style.display = "none"; // Alert verbergen
         alert("Valid email"); // Alert tonen
         form.submit(); // Formulier verzenden als correct
