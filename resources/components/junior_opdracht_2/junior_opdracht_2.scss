@@ -107,6 +107,7 @@
       .card__stat{
         color: $cyan;
         display: flex;
+        align-items: center; 
 
         img{
           margin-right: 0.5rem;
@@ -117,7 +118,7 @@
         }
 
         &:nth-child(2) p {
-          color: $soft-blue; // Kleur voor de tweede stat (bijvoorbeeld rood)
+          color: $soft-blue;
         }
 
       }
