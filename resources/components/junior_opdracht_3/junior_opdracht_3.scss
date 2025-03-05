@@ -2,54 +2,50 @@
 //mobile version time 2:30 hours
 
 .junior_opdracht_3 {
-//colors
+  // Colors
   $blue-800: hsl(234, 29%, 20%);
   $blue-700: hsl(235, 18%, 26%);
   $grey: hsl(0, 0%, 58%);
   $white: hsl(0, 0%, 100%);
 
-//margin & padding
+  // Margin & padding
   $padding-newsletter: 0rem 2rem;
   $margin-bottom: 2rem;
   $gap: 1.5rem;
   $border-radius: 25px;
 
-//text
+  // Text
   $fs: 18px;
   $fw-400: 400;
   $fw-700: 700;
   $forum-fs: 14px;
 
-//wrapper
+  // Wrapper
   width: 100vw;
-  padding: 5rem 0rem ;
+  padding: 5rem 0;
   background: $blue-800;
 
-//styling newsletter mobile
-  .newsletter{
+  // Styling newsletter mobile
+  .newsletter {
     display: flex;
     font-size: $fs;
     flex-direction: column;
     justify-content: center;
-
     gap: $gap;
     background-color: $white;
-    border-radius: 25px;
+    border-radius: $border-radius;
 
-    
-    @media (min-width: 1024px) { //dekstop
+    @media (min-width: 1024px) { // Desktop
       flex-direction: row-reverse;
       justify-content: center;
-      gap: $gap;
       padding: 1.5rem;
     }
-    
-    
 
-    &__image{
+    &__image {
       width: 100%;
       margin-left: auto;
-      img{
+
+      img {
         border-radius: $border-radius;
         width: 100%;
       }
@@ -60,62 +56,64 @@
       }
     }
 
-    &__content{
+    &__content {
       padding: $padding-newsletter;
       display: flex;
       flex-direction: column;
       gap: $gap;
-      h1{
+
+      h1 {
         font-size: 2.5em;
         font-weight: bold;
         color: $blue-800;
       }
 
-      p{
+      p {
         color: $blue-700;
       }
 
-      @media (min-width: 1024px) { //dekstop
+      @media (min-width: 1024px) { // Desktop
         justify-content: center;
       }
     }
- 
-    &__list{
+
+    &__list {
       ul {
         display: flex;
         flex-direction: column;
-        padding: 0rem;
+        padding: 0;
         gap: 0.5rem;
         list-style: none;
       }
 
-      li{
+      li {
         padding-left: 1em;
         position: relative;
-        &::before{
+
+        &::before {
           content: "";
           position: absolute;
-          top: .15em;
+          top: 0.15em;
           width: 1.35rem;
           height: 1.35rem;
-          left: calc(-.25em * .5);
-          background: url("/images/newsletter/icon-list.svg") no-repeat;          
+          left: calc(-0.25em * 0.5);
+          background: url("/images/newsletter/icon-list.svg") no-repeat;
         }
       }
 
-      p{
+      p {
         padding-left: 1rem;
       }
     }
 
-    &__form{
+    &__form {
       display: flex;
       position: relative;
       flex-direction: column;
       gap: $gap;
       margin-bottom: $margin-bottom;
 
-      button{
+      button {
         background-color: $blue-700;
         color: $white;
         border: none;
@@ -123,40 +121,43 @@
         padding: 1rem;
         font-size: 16px;
         font-weight: $fw-700;
-        &:hover{
-          background-color: hsl(4deg 98% 66%);
-          box-shadow: 0px 0px 20px hsl(4, 99%, 71%);
+
+        &:hover {
+          background-color: hsl(4, 98%, 66%);
+          box-shadow: 0 0 20px hsl(4, 99%, 71%);
           transition: all 0.3s ease-in-out;
         }
       }
     }
 
     &__input {
-      input{
+      input {
         border: solid 1px $grey;
         border-radius: 10px;
         width: 100%;
-        padding: .5rem 1rem;
+        padding: 0.5rem 1rem;
         transition: border-color 0.3s ease-in-out;
       }
+
       p {
         font-size: $forum-fs;
         position: absolute;
         left: $padding-newsletter;
       }
-  
+
       .newsletter_alert {
         position: absolute;
-        right: 0rem;
+        right: 0;
         font-size: $forum-fs;
         color: red;
-        display: none; // Verborgen standaard
+        display: none; // Hidden by default
       }
 
       &.invalid {
         input {
           border-color: red;
         }
+
         .newsletter_alert {
           display: block;
         }
@@ -166,7 +167,7 @@
     &__input-label {
       display: flex;
       font-size: $forum-fs;
-      padding: .5em 0;
+      padding: 0.5em 0;
     }
   }
 }
