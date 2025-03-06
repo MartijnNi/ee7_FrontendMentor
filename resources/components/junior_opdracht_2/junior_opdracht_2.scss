@@ -1,5 +1,6 @@
 // Styles for junior_opdracht_2
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 .junior_opdracht_2 {
   // Variables 
   $soft-blue: hsl(215, 51%, 70%);
@@ -11,20 +12,22 @@
   $very-dark-blue-line: hsl(215, 32%, 27%);
   $white: hsl(0, 0%, 100%);
   
+  //text
   $font-size: 18px;
-  $fw-300: 300;
+  $fw-200: 200;
   $fw-400: 400;
   $fw: 600;
-
+  //layout
   $spacing: 1rem;
 
   // General/body styles
   background-color: $very-dark-blue-bg;
   width: 100vw;
   padding: 5rem 1rem;
+  font-family: "Outfit", sans-serif;
 
   //wrapper for more cards
-  .wrapper{
+  .card__wrapper{
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -48,32 +51,34 @@
         border-radius: 10px;
       }
     
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $cyan-hover;
-        border-radius: 10px;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-
-        img{
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 50px;
-          height: 50px;
-        }
-      }
       &:hover {
-        .overlay {
+        cursor: pointer;
+        .card__overlay {
           opacity: 1; // Laat de overlay verschijnen bij hover
         }
       }
     
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $cyan-hover;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+
+      img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+      }
     }
 
     &__title{
@@ -81,7 +86,7 @@
       h1{
         width: max-content;
         color: $white;
-        font-weight: $fw;
+        font-weight: $fw-400;
         margin-bottom: 1rem;
         
         &:hover{
@@ -92,7 +97,7 @@
       }
       p{
         color: $soft-blue;
-        font-weight: $fw-300;
+        font-weight: $fw-200;
       }
 
     }
@@ -130,9 +135,9 @@
       align-items: center;
       margin-top: $spacing;
       color: $soft-blue;
-      font-weight: $fw-300;
+      font-weight: $fw-200;
 
-      .highlight{
+      p span {
         color: $white;
         margin-right: 1rem;
 
