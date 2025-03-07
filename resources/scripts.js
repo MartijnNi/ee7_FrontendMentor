@@ -9,6 +9,7 @@ import '@components/assignment_toggler/assignment_toggler.js';
 import '@components/junior_opdracht_1/junior_opdracht_1.js';
 import '@components/junior_opdracht_2/junior_opdracht_2.js';
 import '@components/junior_opdracht_3/junior_opdracht_3.js';
+import '@components/junior_opdracht_4/junior_opdracht_4.js';
 import '@components/tips/tips.js';
 // ===== End Auto-Generated Imports =====
 
